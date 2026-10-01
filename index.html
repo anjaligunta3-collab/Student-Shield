@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Smart Help</title>
+</head>
+<body>
+  <h1>Student Smart Help 🌟</h1>
+  <p>Students ki oka place lo useful information!</p>
+
+  <button onclick="showLanguage('en')">English</button>
+  <button onclick="showLanguage('te')">తెలుగు</button>
+  <button onclick="showLanguage('hi')">हिंदी</button>
+
+  <h2 id="heading">Welcome Students!</h2>
+  <p id="message">Learn, explore and grow.</p>
+
+  <script>
+    function showLanguage(lang) {
+      const data = {
+        en: ["Welcome Students!", "Learn, explore and grow."],
+        te: ["విద్యార్థులకు స్వాగతం!", "నేర్చుకోండి, అన్వేషించండి, ఎదగండి."],
+        hi: ["छात्रों का स्वागत है!", "सीखें, खोजें और आगे बढ़ें।"]
+      };
+
+      document.getElementById("heading").textContent = data[lang][0];
+      document.getElementById("message").textContent = data[lang][1];
+    }
+  </script>
+</body>
+</html>
