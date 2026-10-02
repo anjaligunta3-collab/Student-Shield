@@ -1,1 +1,456 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Student Smart Help 🌟</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #4f46e5;
+      color: white;
+      text-align: center;
+      padding: 35px 15px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header p {
+      font-size: 17px;
+    }
+
+    .languages {
+      margin-top: 20px;
+    }
+
+    .languages button {
+      padding: 10px 18px;
+      margin: 5px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      background: white;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .languages button:hover {
+      background: #e8e7ff;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .welcome,
+    .question-box {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 3px 10px #dddddd;
+    }
+
+    .welcome {
+      text-align: center;
+    }
+
+    .question-box h2 {
+      margin-top: 0;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 110px;
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      resize: vertical;
+    }
+
+    .ask-btn {
+      margin-top: 12px;
+      padding: 12px 25px;
+      background: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .ask-btn:hover {
+      background: #3730a3;
+    }
+
+    #answer {
+      margin-top: 18px;
+      padding: 15px;
+      background: #f0f2ff;
+      border-radius: 10px;
+      line-height: 1.6;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 30px 0 20px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 3px 10px #dddddd;
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card button {
+      margin-top: 10px;
+      padding: 9px 16px;
+      border: none;
+      border-radius: 7px;
+      background: #4f46e5;
+      color: white;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background: #3730a3;
+    }
+
+    footer {
+      margin-top: 35px;
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 26px;
+      }
+
+      .container {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <h1>Student Smart Help 🌟</h1>
+
+    <p id="topMessage">
+      Students ki oka place lo useful information!
+    </p>
+
+    <div class="languages">
+
+      <button onclick="changeLanguage('en')">
+        English
+      </button>
+
+      <button onclick="changeLanguage('te')">
+        తెలుగు
+      </button>
+
+      <button onclick="changeLanguage('hi')">
+        हिंदी
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <div class="container">
+
+    <div class="welcome">
+
+      <h2 id="welcomeText">
+        Welcome Students! 👋
+      </h2>
+
+      <p id="description">
+        Learn, explore and grow with Student Smart Help.
+      </p>
+
+    </div>
+
+
+    <!-- AI HELP -->
+
+    <div class="question-box">
+
+      <h2>🤖 Ask Student Help</h2>
+
+      <p>
+        Type your question below:
+      </p>
+
+      <textarea
+        id="question"
+        placeholder="Example: How can I learn Python?"
+      ></textarea>
+
+      <button
+        class="ask-btn"
+        onclick="askQuestion()">
+        Ask AI 🤖
+      </button>
+
+      <div id="answer">
+        Your answer will appear here.
+      </div>
+
+    </div>
+
+
+    <h2 class="section-title">
+      🎓 Student Resources
+    </h2>
+
+
+    <div class="features">
+
+
+      <!-- STUDY -->
+
+      <div class="card">
+
+        <h3>📚 Study Help</h3>
+
+        <p>
+          Study guidance, learning resources
+          and preparation support.
+        </p>
+
+        <button onclick="showCard('Study Help')">
+          Explore
+        </button>
+
+      </div>
+
+
+      <!-- CODING -->
+
+      <div class="card">
+
+        <h3>💻 Coding Help</h3>
+
+        <p>
+          Learn programming and improve
+          your coding skills.
+        </p>
+
+        <button onclick="showCard('Coding Help')">
+          Explore
+        </button>
+
+      </div>
+
+
+      <!-- SCHOLARSHIPS -->
+
+      <div class="card">
+
+        <h3>🎓 Scholarships</h3>
+
+        <p>
+          Find useful scholarship information
+          for students.
+        </p>
+
+        <button onclick="showCard('Scholarships')">
+          Explore
+        </button>
+
+      </div>
+
+
+      <!-- INTERNSHIPS -->
+
+      <div class="card">
+
+        <h3>💼 Internships</h3>
+
+        <p>
+          Explore internship and career
+          opportunities.
+        </p>
+
+        <button onclick="showCard('Internships')">
+          Explore
+        </button>
+
+      </div>
+
+
+      <!-- COURSES -->
+
+      <div class="card">
+
+        <h3>🏆 Courses & Certificates</h3>
+
+        <p>
+          Discover courses and certificate
+          learning opportunities.
+        </p>
+
+        <button onclick="showCard('Courses and Certificates')">
+          Explore
+        </button>
+
+      </div>
+
+
+      <!-- TOOLS -->
+
+      <div class="card">
+
+        <h3>🧮 Student Tools</h3>
+
+        <p>
+          Useful tools for study and
+          student activities.
+        </p>
+
+        <button onclick="showCard('Student Tools')">
+          Explore
+        </button>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <footer>
+
+    <p>
+      Student Smart Help 🌟
+    </p>
+
+    <p>
+      Built to support students in learning and growth.
+    </p>
+
+  </footer>
+
+
+  <script>
+
+    function changeLanguage(lang) {
+
+      const data = {
+
+        en: [
+          "Welcome Students! 👋",
+          "Learn, explore and grow with Student Smart Help.",
+          "Students ki oka place lo useful information!"
+        ],
+
+        te: [
+          "విద్యార్థులకు స్వాగతం! 👋",
+          "నేర్చుకోండి, అన్వేషించండి మరియు ఎదగండి.",
+          "విద్యార్థులకు ఉపయోగకరమైన సమాచారం ఒకే చోట!"
+        ],
+
+        hi: [
+          "छात्रों का स्वागत है! 👋",
+          "सीखें, खोजें और आगे बढ़ें।",
+          "छात्रों के लिए उपयोगी जानकारी एक ही जगह!"
+        ]
+
+      };
+
+      document.getElementById("welcomeText").innerText =
+        data[lang][0];
+
+      document.getElementById("description").innerText =
+        data[lang][1];
+
+      document.getElementById("topMessage").innerText =
+        data[lang][2];
+
+    }
+
+
+    function askQuestion() {
+
+      const question =
+        document.getElementById("question").value.trim();
+
+      const answer =
+        document.getElementById("answer");
+
+
+      if (question === "") {
+
+        answer.innerText =
+          "Please type your question first. 😊";
+
+        return;
+
+      }
+
+
+      answer.innerText =
+        "Your question: " + question +
+        "\n\nAI answer feature will be connected in the next development step. 🤖";
+
+    }
+
+
+    function showCard(name) {
+
+      document.getElementById("answer").innerText =
+        name +
+        " selected! More resources will be added here.";
+
+      window.scrollTo({
+        top: document.querySelector(".question-box").offsetTop,
+        behavior: "smooth"
+      });
+
+    }
+
+  </script>
+
+</body>
+</html>
