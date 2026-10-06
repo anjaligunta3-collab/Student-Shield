@@ -411,46 +411,52 @@
     }
 
 
-    function askQuestion() {
+    async function askQuestion() {
 
-      const question =
-        document.getElementById("question").value.trim();
+  const question =
+    document.getElementById("question").value.trim();
 
-      const answer =
-        document.getElementById("answer");
+  const answer =
+    document.getElementById("answer");
 
+  if (question === "") {
+    answer.innerText =
+      "Please type your question first. 😊";
+    return;
+  }
 
-      if (question === "") {
+  answer.innerText =
+    "🤖 Thinking... Please wait...";
 
-        answer.innerText =
-          "Please type your question first. 😊";
+  try {
 
-        return;
+    const response = await fetch(
+      "YOUR_CLOUDFLARE_WORKER_URL",
+      {
+        method: "POST",
 
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          question: question
+        })
       }
+    );
 
+    const data = await response.json();
 
-      answer.innerText =
-        "Your question: " + question +
-        "\n\nAI answer feature will be connected in the next development step. 🤖";
+    answer.innerText =
+      data.answer ||
+      "Sorry, I could not get an answer.";
 
-    }
+  } catch (error) {
 
+    answer.innerText =
+      "❌ AI connection failed. Please try again.";
 
-    function showCard(name) {
+  }
+}
 
-      document.getElementById("answer").innerText =
-        name +
-        " selected! More resources will be added here.";
-
-      window.scrollTo({
-        top: document.querySelector(".question-box").offsetTop,
-        behavior: "smooth"
-      });
-
-    }
-
-  </script>
-
-</body>
-</html>
+      
