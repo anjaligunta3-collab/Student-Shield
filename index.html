@@ -465,5 +465,22 @@
       "❌ AI connection failed. Please try again.";
   }
 }
+function showCard(type) {
+  const answer = document.getElementById("answer");
+
+  const messages = {
+    "Study Help": "📚 Study Help\n\nFind study guidance, subject preparation, notes, important questions and learning tips.",
+    "Coding Help": "💻 Coding Help\n\nLearn C, C++, Java, Python, HTML, CSS and programming fundamentals.",
+    "Scholarships": "🎓 Scholarships\n\nFind scholarships and education support information for students.",
+    "Internships": "💼 Internships\n\nExplore student internships, virtual internships and training opportunities.",
+    "Courses and Certificates": "🏆 Courses & Certificates\n\nExplore free courses, certifications and skill-development opportunities.",
+    "Student Tools": "🧮 Student Tools\n\nUseful tools for study and student activities."
+  };
+
+  answer.innerText = messages[type] || "Information not available.";
+  document.querySelector(".question-box").scrollIntoView({
+    behavior: "smooth"
+  });
+}
 
       
