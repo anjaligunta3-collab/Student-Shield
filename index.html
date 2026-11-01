@@ -483,4 +483,42 @@ function showCard(type) {
   });
 }
 
+async function askQuestion() {
+  const question = document.getElementById("question").value.trim();
+  const answerBox = document.getElementById("answer");
+
+  if (!question) {
+    answerBox.innerText = "Please enter a question!";
+    return;
+  }
+
+  answerBox.innerText = "Thinking... 🤖";
+
+  try {
+    const response = await fetch(
+      "https://student-smart-help-ai.anjaligunta3.workers.dev",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ question: question })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Server error");
+    }
+
+    answerBox.innerText = data.answer || "No answer received.";
+
+  } catch (error) {
+    answerBox.innerText = "Error: " + error.message;
+    console.error(error);
+  }
+}
+
+
       
